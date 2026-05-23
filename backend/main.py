@@ -349,8 +349,8 @@ def generate_invite_card(name: str) -> str:
     draw_text_shadow(card, dear_text, W//2, 680, f, 2.2, GOLD2, SHAD, thickness=2)
 
     # ── Sub-message ───────────────────────────────────────────────────────
-    msg1 = "Your presence would make this celebration truly complete."
-    msg2 = "With love, joy, and the warmest of hearts  -  The Family"
+    msg1 = "Your presence would make this celebration complete."
+    msg2 = "30th May | 6 PM | Club House, Serenity\nWith love — The Patil Family"
     draw_text_shadow(card, msg1, W//2, 750, fup, 0.80, CREAM, SHAD, thickness=1)
     draw_text_shadow(card, msg2, W//2, 800, fup, 0.72, CREAM, SHAD, thickness=1)
 
