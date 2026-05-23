@@ -2,7 +2,7 @@
    SAVITRI'S 50th — app.js
    Change API_BASE to your deployed server URL before sharing
 ============================================================ */
-const API_BASE = "https://birthday-invite.onrender.com";
+const API_BASE = "https://moms-bday-ep58.onrender.com";
 
 /* ── Screen routing ─────────────────────────────────────── */
 function show(id) {
