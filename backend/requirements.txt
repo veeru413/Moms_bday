@@ -1,7 +1,6 @@
 fastapi==0.111.0
 uvicorn
+opencv-contrib-python==4.9.0.80
+numpy==1.26.4
 python-multipart==0.0.9
 pydantic
-
-numpy==1.26.4
-opencv-contrib-python==4.10.0.84
