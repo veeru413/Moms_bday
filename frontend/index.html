@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're Invited — Savitri's 50th ✨</title>
+  <style>
+    /* Embed fonts directly so no CDN needed */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Montserrat:wght@300;400;600&display=swap');
+  </style>
+  <link rel="stylesheet" href="static/css/style.css" />
+</head>
+<body>
+
+<canvas id="bgCanvas"></canvas>
+<div id="floaters"></div>
+
+<!-- ═══ SCREEN 1: WELCOME ═══ -->
+<div id="s-welcome" class="screen on">
+  <div class="card" id="welcome-card">
+
+    <div class="badge-ring">
+      <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stop-color="#F9D45C"/>
+            <stop offset="50%"  stop-color="#FFF3B0"/>
+            <stop offset="100%" stop-color="#C8861A"/>
+          </linearGradient>
+          <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stop-color="#E8496A"/>
+            <stop offset="100%" stop-color="#FF8FAB"/>
+          </linearGradient>
+        </defs>
+        <!-- outer gold ring -->
+        <circle cx="70" cy="70" r="62" fill="none" stroke="url(#g1)" stroke-width="2" stroke-dasharray="8 5" />
+        <!-- inner ring -->
+        <circle cx="70" cy="70" r="52" fill="rgba(255,200,100,0.06)" stroke="url(#g1)" stroke-width="1" opacity="0.5"/>
+        <!-- rose fill -->
+        <circle cx="70" cy="70" r="46" fill="url(#g2)" opacity="0.15"/>
+        <!-- stars at compass points -->
+        <polygon points="70,10 72,16 78,16 73,20 75,26 70,22 65,26 67,20 62,16 68,16" fill="#F9D45C"/>
+        <polygon points="70,130 72,124 78,124 73,120 75,114 70,118 65,114 67,120 62,124 68,124" fill="#F9D45C"/>
+        <polygon points="10,70 16,68 16,62 20,67 26,65 22,70 26,75 20,73 16,78 16,72" fill="#F9D45C"/>
+        <polygon points="130,70 124,68 124,62 120,67 114,65 118,70 114,75 120,73 124,78 124,72" fill="#F9D45C"/>
+      </svg>
+      <div class="badge-inner">
+        <span class="badge-num">50</span>
+        <span class="badge-sub">years</span>
+      </div>
+    </div>
+
+    <p class="eyebrow">— You have been cordially invited —</p>
+
+    <h1 class="title-main">
+      <span class="t-celebrate">Celebrate</span>
+      <span class="t-name">Savitri's</span>
+      <span class="t-fab">Fabulous</span>
+      <span class="t-50">50<sup>th</sup></span>
+      <span class="t-bday">Birthday</span>
+    </h1>
+
+    <div class="orn-divider">
+      <div class="orn-line"></div>
+      <span class="orn-sym">❧</span>
+      <div class="orn-line"></div>
+    </div>
+
+    <p class="body-text">
+      To unlock your personal invitation,<br>
+      a quick face scan is all it takes.<br>
+      <em>It's magical — we promise. 🌟</em>
+    </p>
+
+    <button class="btn-gold" id="btn-start">
+      ✦ &nbsp; Unveil My Invitation &nbsp; ✦
+    </button>
+
+    <p class="fine-print">📷 Camera used only to identify you — nothing is stored.</p>
+
+    <div class="card-emoji-row">🎂 &nbsp; 🎉 &nbsp; 🌸 &nbsp; 🎊 &nbsp; 🎈 &nbsp; ✨ &nbsp; 🥂</div>
+  </div>
+</div>
+
+<!-- ═══ SCREEN 2: CAMERA ═══ -->
+<div id="s-camera" class="screen">
+  <div class="card">
+    <p class="eyebrow">— Identity Verification —</p>
+    <h2 class="cam-title">Smile for the Camera 📸</h2>
+    <p class="cam-hint">Centre your face in the frame, then tap Capture.</p>
+
+    <div class="cam-wrap">
+      <video id="video" autoplay playsinline muted></video>
+      <canvas id="ov-canvas"></canvas>
+      <div class="cam-corner cc-tl"></div>
+      <div class="cam-corner cc-tr"></div>
+      <div class="cam-corner cc-bl"></div>
+      <div class="cam-corner cc-br"></div>
+      <div class="cam-sweep"></div>
+      <div class="cam-badge" id="cam-badge">✦ READY ✦</div>
+    </div>
+
+    <button class="btn-gold" id="btn-capture">📸 &nbsp; Capture &amp; Identify Me</button>
+    <button class="btn-ghost" id="btn-cam-back">← Back</button>
+    <canvas id="snap-canvas" style="display:none"></canvas>
+  </div>
+</div>
+
+<!-- ═══ SCREEN 3: PROCESSING ═══ -->
+<div id="s-proc" class="screen">
+  <div class="card proc-card">
+    <div class="proc-spinner">
+      <div class="spin-outer"></div>
+      <div class="spin-inner"></div>
+      <div class="spin-emoji">✨</div>
+    </div>
+    <p class="eyebrow" style="margin-top:28px">— Please wait —</p>
+    <h2 class="cam-title">Crafting Your<br>Personal Invitation</h2>
+    <div class="proc-steps">
+      <div class="pstep" id="p1"><span class="ps-ico">🔍</span><span class="ps-txt">Recognising your face…</span><span class="ps-ok">✓</span></div>
+      <div class="pstep" id="p2"><span class="ps-ico">🎨</span><span class="ps-txt">Designing your invite card…</span><span class="ps-ok">✓</span></div>
+      <div class="pstep" id="p3"><span class="ps-ico">🎁</span><span class="ps-txt">Wrapping it with love…</span><span class="ps-ok">✓</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SCREEN 4: RESULT ═══ -->
+<div id="s-result" class="screen">
+  <div class="card">
+    <div id="confetti-zone"></div>
+    <p class="eyebrow">— Your Invitation Is Ready —</p>
+    <h2 class="result-name" id="result-name">Welcome! 🎉</h2>
+    <p class="cam-hint" id="result-msg">Here is your personalised invitation card.</p>
+
+    <div class="invite-frame">
+      <img id="invite-img" src="" alt="Your personalised invite"/>
+      <div class="invite-sheen"></div>
+    </div>
+
+    <div class="result-btns">
+      <a id="btn-dl" class="btn-gold" href="#" download>⬇ &nbsp; Download My Invitation</a>
+      <button class="btn-ghost" id="btn-retry">↺ &nbsp; Scan Again</button>
+    </div>
+    <p class="fine-print" style="margin-top:16px">🎂 We can't wait to celebrate with you! 🎂</p>
+  </div>
+</div>
+
+<script src="static/js/app.js"></script>
+</body>
+</html>
